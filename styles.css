@@ -6,6 +6,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
   height: 100vh;
   display: flex;
 }
@@ -31,9 +32,9 @@ body {
 }
 
 .color button {
+  font-size: 1.5rem;
   border: none;
   background: none;
-  font-size: 1.7rem;
   color: #000000;
   padding: 1.5rem;
   border-radius: 5px;
