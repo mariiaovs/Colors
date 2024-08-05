@@ -1,5 +1,5 @@
 const colorSections = document.querySelectorAll('[data-js="color"]');
-
+const lockButtons = document.querySelectorAll('[data-js="lock-button"]');
 const hexCodes = "0123456789ABCDEF";
 
 document.addEventListener("keydown", (event) => {
@@ -36,3 +36,12 @@ function calculateLuminance(hexColor) {
   let b = parseInt(hexColor.substring(5, 7), 16) / 255;
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
+
+lockButtons.forEach((lockButton) => {
+  lockButton.addEventListener("click", () => {
+    const lockIcon = lockButton.querySelector("i");
+    console.log(lockIcon);
+    lockIcon.classList.toggle("fa-lock-open");
+    lockIcon.classList.toggle("fa-lock");
+  });
+});
