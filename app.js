@@ -19,6 +19,10 @@ function generateRandomColor() {
 
 function setRandomColors() {
   colorSections.forEach((colorSection) => {
+    const isLocked = colorSection
+      .querySelector("i")
+      .classList.contains("fa-lock");
+    if (isLocked) return;
     const color = generateRandomColor();
     const heading = colorSection.querySelector("h2");
     const lock = colorSection.querySelector("button");
