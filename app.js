@@ -1,5 +1,7 @@
 const colorSections = document.querySelectorAll('[data-js="color"]');
 const lockButtons = document.querySelectorAll('[data-js="lock-button"]');
+const headings = document.querySelectorAll('[data-js="heading"]');
+
 const hexCodes = "0123456789ABCDEF";
 
 document.addEventListener("keydown", (event) => {
@@ -47,5 +49,15 @@ lockButtons.forEach((lockButton) => {
     const lockIcon = lockButton.querySelector("i");
     lockIcon.classList.toggle("fa-lock-open");
     lockIcon.classList.toggle("fa-lock");
+  });
+});
+
+function copyToClickboard(text) {
+  return navigator.clipboard.writeText(text);
+}
+
+headings.forEach((heading) => {
+  heading.addEventListener("click", () => {
+    copyToClickboard(heading.textContent);
   });
 });
