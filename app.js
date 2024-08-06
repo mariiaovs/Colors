@@ -52,12 +52,29 @@ lockButtons.forEach((lockButton) => {
   });
 });
 
-function copyToClickboard(text) {
-  return navigator.clipboard.writeText(text);
-}
+function copyToClickboard(text) {}
 
 headings.forEach((heading) => {
   heading.addEventListener("click", () => {
-    copyToClickboard(heading.textContent);
+    navigator.clipboard
+      .writeText(heading.textContent)
+      .then(() => {
+        const messageElement = document.createElement("span");
+        messageElement.textContent = "Text successfully copied to clipboard!";
+        messageElement.className = "message success";
+        heading.appendChild(messageElement);
+        setTimeout(() => {
+          messageElement.remove();
+        }, 5000);
+      })
+      .catch((err) => {
+        const messageElement = document.createElement("span");
+        messageElement.textContent = "Failed to copy text: " + err.message;
+        messageElement.className = "error";
+        heading.appendChild(messageElement);
+        setTimeout(() => {
+          messageElement.remove();
+        }, 5000);
+      });
   });
 });
