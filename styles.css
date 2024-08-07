@@ -11,6 +11,10 @@ body {
   display: flex;
 }
 
+.container {
+  position: relative;
+}
+
 .color {
   flex: 1;
   display: flex;
@@ -36,8 +40,8 @@ body {
   text-align: center;
   padding: 0.5rem;
   border-radius: 0.3rem;
-  display: inline-block;
   font-size: 0.8rem;
+  position: absolute;
 }
 
 .success {

@@ -52,14 +52,12 @@ lockButtons.forEach((lockButton) => {
   });
 });
 
-function copyToClickboard(text) {}
-
 headings.forEach((heading) => {
   heading.addEventListener("click", () => {
     navigator.clipboard
       .writeText(heading.textContent)
       .then(() => {
-        const messageElement = document.createElement("span");
+        const messageElement = document.createElement("p");
         messageElement.textContent = "Text successfully copied to clipboard!";
         messageElement.className = "message success";
         heading.insertAdjacentElement("afterend", messageElement);
@@ -68,9 +66,9 @@ headings.forEach((heading) => {
         }, 1000);
       })
       .catch((err) => {
-        const messageElement = document.createElement("span");
+        const messageElement = document.createElement("p");
         messageElement.textContent = "Failed to copy text: " + err.message;
-        messageElement.className = "error";
+        messageElement.className = "message error";
         heading.insertAdjacentElement("afterend", messageElement);
         setTimeout(() => {
           messageElement.remove();
