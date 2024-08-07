@@ -65,7 +65,7 @@ headings.forEach((heading) => {
         heading.appendChild(messageElement);
         setTimeout(() => {
           messageElement.remove();
-        }, 5000);
+        }, 1000);
       })
       .catch((err) => {
         const messageElement = document.createElement("span");
@@ -74,7 +74,7 @@ headings.forEach((heading) => {
         heading.appendChild(messageElement);
         setTimeout(() => {
           messageElement.remove();
-        }, 5000);
+        }, 1000);
       });
   });
 });
