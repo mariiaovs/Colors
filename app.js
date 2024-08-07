@@ -62,7 +62,7 @@ headings.forEach((heading) => {
         const messageElement = document.createElement("span");
         messageElement.textContent = "Text successfully copied to clipboard!";
         messageElement.className = "message success";
-        heading.appendChild(messageElement);
+        heading.insertAdjacentElement("afterend", messageElement);
         setTimeout(() => {
           messageElement.remove();
         }, 1000);
@@ -71,7 +71,7 @@ headings.forEach((heading) => {
         const messageElement = document.createElement("span");
         messageElement.textContent = "Failed to copy text: " + err.message;
         messageElement.className = "error";
-        heading.appendChild(messageElement);
+        heading.insertAdjacentElement("afterend", messageElement);
         setTimeout(() => {
           messageElement.remove();
         }, 1000);
