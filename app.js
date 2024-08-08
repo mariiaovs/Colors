@@ -20,13 +20,19 @@ function generateRandomColor() {
 }
 
 function setRandomColors() {
+  const colors = [];
   colorSections.forEach((colorSection) => {
     const isLocked = colorSection
       .querySelector("i")
       .classList.contains("fa-lock");
-    if (isLocked) return;
-    const color = generateRandomColor();
     const heading = colorSection.querySelector("h2");
+    if (isLocked) {
+      colors.push(heading.textContent);
+      return;
+    }
+
+    const color = generateRandomColor();
+    colors.push(color);
     const lock = colorSection.querySelector("button");
     heading.textContent = color;
     heading.style.color = calculateLuminance(color) >= 0.5 ? "black" : "white";
