@@ -66,6 +66,7 @@ headings.forEach((heading) => {
         const messageElement = document.createElement("p");
         messageElement.textContent = "Text successfully copied to clipboard!";
         messageElement.className = "message success";
+        messageElement.style.backgroundColor = heading.style.color;
         heading.insertAdjacentElement("afterend", messageElement);
         setTimeout(() => {
           messageElement.remove();
@@ -75,6 +76,7 @@ headings.forEach((heading) => {
         const messageElement = document.createElement("p");
         messageElement.textContent = "Failed to copy text: " + err.message;
         messageElement.className = "message error";
+        messageElement.style.backgroundColor = heading.style.color;
         heading.insertAdjacentElement("afterend", messageElement);
         setTimeout(() => {
           messageElement.remove();
