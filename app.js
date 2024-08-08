@@ -39,6 +39,7 @@ function setRandomColors() {
     lock.style.color = calculateLuminance(color) >= 0.5 ? "black" : "white";
     colorSection.style.background = color;
   });
+  updateColorsHash(colors);
 }
 
 setRandomColors();
@@ -84,3 +85,7 @@ headings.forEach((heading) => {
       });
   });
 });
+
+function updateColorsHash(colors = []) {
+  document.location.hash = colors.map((color) => color.substring(1)).join("-");
+}
