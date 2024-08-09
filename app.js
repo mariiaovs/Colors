@@ -19,9 +19,9 @@ function generateRandomColor() {
   return color;
 }
 
-function setRandomColors() {
-  const colors = [];
-  colorSections.forEach((colorSection) => {
+function setRandomColors(isInitial) {
+  const colors = isInitial ? getColorsFromHash() : [];
+  colorSections.forEach((colorSection, index) => {
     const isLocked = colorSection
       .querySelector("i")
       .classList.contains("fa-lock");
@@ -31,8 +31,13 @@ function setRandomColors() {
       return;
     }
 
-    const color = generateRandomColor();
-    colors.push(color);
+    const color =
+      isInitial & colors.length ? colors[index] : generateRandomColor();
+
+    if (!isInitial) {
+      colors.push(color);
+    }
+
     const lock = colorSection.querySelector("button");
     heading.textContent = color;
     heading.style.color = calculateLuminance(color) >= 0.5 ? "black" : "white";
@@ -41,8 +46,6 @@ function setRandomColors() {
   });
   updateColorsHash(colors);
 }
-
-setRandomColors();
 
 function calculateLuminance(hexColor) {
   let r = parseInt(hexColor.substring(1, 3), 16) / 255;
@@ -89,3 +92,15 @@ headings.forEach((heading) => {
 function updateColorsHash(colors = []) {
   document.location.hash = colors.map((color) => color.substring(1)).join("-");
 }
+
+function getColorsFromHash() {
+  if (document.location.hash.length > 1) {
+    return document.location.hash
+      .substring(1)
+      .split("-")
+      .map((color) => "#" + color);
+  }
+  return [];
+}
+
+setRandomColors(true);
