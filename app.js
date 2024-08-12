@@ -5,8 +5,8 @@ const headings = document.querySelectorAll('[data-js="heading"]');
 const hexCodes = "0123456789ABCDEF";
 
 document.addEventListener("keydown", (event) => {
-  event.preventDefault();
   if (event.code === "Space") {
+    event.preventDefault();
     setRandomColors();
   }
 });
