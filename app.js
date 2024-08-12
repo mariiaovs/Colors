@@ -23,7 +23,7 @@ function setRandomColors(isInitial) {
   const colors = isInitial ? getColorsFromHash() : [];
   colorSections.forEach((colorSection, index) => {
     const isLocked = colorSection
-      .querySelector("i")
+      .querySelector("span")
       .classList.contains("fa-lock");
     const heading = colorSection.querySelector("h2");
     if (isLocked) {
@@ -56,7 +56,7 @@ function calculateLuminance(hexColor) {
 
 lockButtons.forEach((lockButton) => {
   lockButton.addEventListener("click", () => {
-    const lockIcon = lockButton.querySelector("i");
+    const lockIcon = lockButton.querySelector("span");
     lockIcon.classList.toggle("fa-lock-open");
     lockIcon.classList.toggle("fa-lock");
   });
